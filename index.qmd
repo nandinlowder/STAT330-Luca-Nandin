@@ -10,7 +10,7 @@ description: "A STAT 330 regression case study of education and Democratic versu
 
 ::: {.callout-note}
 ## Project status
-This website is a preliminary checkpoint version. The analysis and AI-supported extension are still in development.
+This website is a preliminary checkpoint version.
 :::
 
 ## The question
