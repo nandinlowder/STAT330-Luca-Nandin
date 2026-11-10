@@ -1,0 +1,100 @@
+[
+  {
+    "objectID": "ai-use.html",
+    "href": "ai-use.html",
+    "title": "AI Use and Verification",
+    "section": "",
+    "text": "This page is a work log, not a second report. Short bullets are welcome. It is separate from the final case study and does not count toward the 750 to 1,000 word range."
+  },
+  {
+    "objectID": "ai-use.html#starting-point",
+    "href": "ai-use.html#starting-point",
+    "title": "AI Use and Verification",
+    "section": "Starting point",
+    "text": "Starting point\nAI system and date: Replace.\nBefore using AI for the required extension, briefly state your question, course-based core model, baseline result, and the specific limitation or opportunity you wanted to address."
+  },
+  {
+    "objectID": "ai-use.html#substantive-prompts",
+    "href": "ai-use.html#substantive-prompts",
+    "title": "AI Use and Verification",
+    "section": "Substantive prompts",
+    "text": "Substantive prompts\nPaste the exact prompts that shaped the extension. Include the customized extension-selection prompt from the checkpoint and any important implementation follow-ups. Delete unused prompt blocks.\n\nReplace with an exact prompt.\n\n\nReplace with another exact prompt, if needed."
+  },
+  {
+    "objectID": "ai-use.html#my-decisions",
+    "href": "ai-use.html#my-decisions",
+    "title": "AI Use and Verification",
+    "section": "My decisions",
+    "text": "My decisions\n\nAccepted: What useful advice did you use?\nChanged: What did you adapt to fit your data or goals?\nRejected or corrected: What advice was unsuitable, unnecessary, or wrong?\n\nConnection to the final case study: Identify where the extension’s method and result appear on the final page and how they strengthen the course-based analysis."
+  },
+  {
+    "objectID": "ai-use.html#independent-verification",
+    "href": "ai-use.html#independent-verification",
+    "title": "AI Use and Verification",
+    "section": "Independent verification",
+    "text": "Independent verification\n\nCheck and result: Replace with an official source, diagnostic, simulation, manual calculation, comparison with a known method, or another suitable check.\nCheck and result: Replace with a different check and what you learned.\n\nLink or cite verification sources where appropriate. A second AI response does not count as independent verification."
+  },
+  {
+    "objectID": "ai-use.html#remaining-limitation",
+    "href": "ai-use.html#remaining-limitation",
+    "title": "AI Use and Verification",
+    "section": "Remaining limitation",
+    "text": "Remaining limitation\nState one important uncertainty, failure mode, or limitation that remains."
+  },
+  {
+    "objectID": "ai-use.html#other-ai-use-if-any",
+    "href": "ai-use.html#other-ai-use-if-any",
+    "title": "AI Use and Verification",
+    "section": "Other AI use, if any",
+    "text": "Other AI use, if any\nBriefly disclose earlier debugging, proofreading, or other AI assistance. Write “None” if there was no other use."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Investigating the Relationship Between Educational Attainment and Political Affiliation",
+    "section": "",
+    "text": "NoteProject status\n\n\n\nThis website is a preliminary checkpoint version. The analysis and AI-supported extension are still in development."
+  },
+  {
+    "objectID": "index.html#the-question",
+    "href": "index.html#the-question",
+    "title": "Investigating the Relationship Between Educational Attainment and Political Affiliation",
+    "section": "The question",
+    "text": "The question\nIs educational attainment associated with leaning Democratic rather than Republican, after accounting for age and household income?\nOur intended audience is U.S. citizens aged 18 and older who are interested in politics. This question matters because it helps us understand whether differences in political leaning across education levels persist after accounting for age and income.\nWe use the 2024 American National Election Studies (ANES) Time Series Study, May 19, 2026 release. The dataset contains 5,521 respondents and 1,738 variables, with one row per respondent. ANES combines newly recruited address-based samples with returning panel participants and collects interviews through online, in-person, telephone, and paper surveys. Our analysis uses pre-election variables.\nThe response is binary political leaning, constructed from party identification (V241227x): Democratic identifiers and Democratic-leaning independents (categories 1–3) are coded 1, while Republican identifiers and Republican-leaning independents (categories 5–7) are coded 0. Neutral independents and missing or invalid responses are excluded. The main predictor is education (V241465x), with age (V241458x) and household income (V241567x) included as additional predictors. Education and income are treated as categorical variables. Our proposal’s data checks identified 4,640 complete observations for this analysis.\nANES permits research and statistical use with citation and protection of respondent privacy. We will report aggregate results. Limitations include self-reported responses, potential selection bias from missing data, income measured in brackets, and ages capped at 80. Population-level conclusions require appropriate survey weights and consideration of the sampling design. This observational study can identify associations but cannot establish causation."
+  },
+  {
+    "objectID": "index.html#what-the-baseline-shows",
+    "href": "index.html#what-the-baseline-shows",
+    "title": "Investigating the Relationship Between Educational Attainment and Political Affiliation",
+    "section": "What the baseline shows",
+    "text": "What the baseline shows\nOur baseline is multiple logistic regression with Democratic versus Republican leaning as the binary response and education, age, and household income as predictors. Logistic regression is appropriate because the response has two categories.\nIn progress: add the reproducible baseline code, selected model output, a contextual interpretation with uncertainty, and a limitation that motivates further analysis.\n\n\nShow code\n# Load and prepare the data, then fit the baseline logistic regression.\n\n\n\n\nShow code\n# Display a useful figure or compact model summary."
+  },
+  {
+    "objectID": "index.html#going-beyond-the-baseline",
+    "href": "index.html#going-beyond-the-baseline",
+    "title": "Investigating the Relationship Between Educational Attainment and Political Affiliation",
+    "section": "Going beyond the baseline",
+    "text": "Going beyond the baseline\n\nHow well does the model predict unseen responses?\nWe plan to use cross-validation to compare logistic regression specifications on held-out observations. This represents the validation and comparison course-method family.\n\n\nShow code\n# Implement cross-validation and compare predictive performance.\n\n\n\n\nDoes regularization improve prediction?\nWe plan to compare the baseline with ridge or LASSO logistic regression to assess whether shrinking coefficients improves predictive performance. This represents the selection and shrinkage course-method family.\n\n\nShow code\n# Fit and evaluate a regularized logistic regression model."
+  },
+  {
+    "objectID": "index.html#a-new-direction-with-ai",
+    "href": "index.html#a-new-direction-with-ai",
+    "title": "Investigating the Relationship Between Educational Attainment and Political Affiliation",
+    "section": "A new direction with AI",
+    "text": "A new direction with AI\nIn progress: identify an extension motivated by the preliminary analysis, document two independent verification checks, and explain how the extension strengthens the same research question.\nDetails and the extension plan will be recorded in the AI-use record.\n\n\nShow code\n# Implement the selected extension and report its verification results."
+  },
+  {
+    "objectID": "index.html#what-this-means",
+    "href": "index.html#what-this-means",
+    "title": "Investigating the Relationship Between Educational Attainment and Political Affiliation",
+    "section": "What this means",
+    "text": "What this means\nIn progress: answer the research question using the completed analysis, discuss uncertainty and limitations, and distinguish association from causation."
+  },
+  {
+    "objectID": "index.html#data-and-code",
+    "href": "index.html#data-and-code",
+    "title": "Investigating the Relationship Between Educational Attainment and Political Affiliation",
+    "section": "Data and code",
+    "text": "Data and code\n\nData: American National Election Studies. 2026. ANES 2024 Time Series Study Full Release [dataset and documentation]. May 19, 2026 version. Study page and downloads.\nRetrieval: Download the May 19, 2026 CSV release and accompanying codebook from the study page. The analysis uses anes_timeseries_2024_csv_20260519.csv.\nRepository: STAT330-Luca-Nandin.\nAI assistance: See the AI-use record. ChatGPT assisted with question development, proposal drafting, R code, interpretation, and preparation of this checkpoint page."
+  }
+]
