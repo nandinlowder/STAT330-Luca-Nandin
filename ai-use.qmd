@@ -1,44 +1,71 @@
 ---
 title: "AI Use and Verification"
-description: "A concise record of AI-supported work on this project."
-author: "Replace with all group members' names"
+description: "Preliminary AI-extension plan and verification record for our ANES political-leaning project."
+author:
+  - "Luca Ortega Avila"
+  - "Nandintsetseg Batsaikhan"
 ---
 
-This page is a work log, not a second report. Short bullets are welcome. It is separate from the final case study and does not count toward the 750 to 1,000 word range.
+[Return to the case study](index.qmd)
 
 ## Starting point
 
-**AI system and date:** Replace.
+**AI system and date:** OpenAI ChatGPT, November 9, 2026.
 
-**Before using AI for the required extension, briefly state your question, course-based core model, baseline result, and the specific limitation or opportunity you wanted to address.**
+**Status:** Preliminary extension proposal. The extension has not yet been implemented, and verification results are pending.
+
+Our question is: **Is educational attainment associated with leaning Democratic rather than Republican, after accounting for age and household income?**
+
+We use the 2024 ANES Time Series Study, May 19, 2026 release. Our course-based baseline is logistic regression with Democratic leaning coded 1 and Republican leaning coded 0, including independent leaners and excluding neutral independents. Predictors are education, age, and household income.
+
+The preliminary unweighted analysis uses 4,640 complete observations. Compared with respondents with less than a high school education, graduate-degree holders have estimated odds of Democratic leaning approximately 2.51 times as large, holding age and income constant (approximate 95% Wald confidence interval: 1.82–3.45). This is an association, not a causal effect.
+
+The baseline ignores survey weights and the complex sampling design. This limitation motivates examining whether the education association changes when we account for the design.
+
+## Proposed extension
+
+**Survey-weighted logistic regression as a sensitivity analysis.**
+
+ChatGPT proposed fitting the same model using the R `survey` package and the ANES-recommended pre-election weights, strata, and primary sampling unit identifiers for our selected sample.
+We will construct the survey design for the eligible sample before selecting the analysis subpopulation, following ANES guidance. The weighted and unweighted comparisons will use the same eligible respondents, outcome coding, predictors, and reference categories.
+We will compare the education odds ratios and confidence intervals and explain whether the substantive conclusion changes. This comparison will appear in the case study's AI-extension section.
+
 
 ## Substantive prompts
 
-Paste the exact prompts that shaped the extension. Include the customized extension-selection prompt from the checkpoint and any important implementation follow-ups. Delete unused prompt blocks.
+**Actual request in this session:** “ai-use.qmd suggestion”
+ChatGPT used that context to draft this page.
 
-> Replace with an exact prompt.
+**Prepared follow-up prompt—not yet submitted:**
 
-> Replace with another exact prompt, if needed.
+> I am creating a regression case study in R and Quarto using the 2024 ANES. My question is whether education is associated with Democratic rather than Republican leaning, accounting for age and household income. My binary response includes major-party identifiers and independent leaners. My baseline is unweighted logistic regression on 4,640 complete observations; the graduate-degree versus less-than-high-school odds ratio is 2.51 with an approximate 95% interval of 1.82–3.45. The limitation is that the model ignores survey weights and the complex design. Help implement survey-weighted logistic regression as a sensitivity analysis. Use the official ANES codebook to establish the appropriate pre-election weight, strata, and PSU variables for the selected sample. Keep the outcome and predictors unchanged, compare models on the same eligible respondents, and explain two independent verification checks. Do not claim any checks or results are complete until they have actually been run.
 
 ## My decisions
 
-- **Accepted:** What useful advice did you use?
-- **Changed:** What did you adapt to fit your data or goals?
-- **Rejected or corrected:** What advice was unsuitable, unnecessary, or wrong?
-
-**Connection to the final case study:** Identify where the extension's method and result appear on the final page and how they strengthen the course-based analysis.
+- **Proposed by AI:** Survey-weighted sensitivity analysis addressing the baseline's survey-design limitation.
+- **Pending group review:** Final extension selection and any instructor feedback.
+- **Implementation decisions still pending:** Sample definition, survey-design variables, and handling of missing design information.
+- **Claim corrected during proposal work:** An odds ratio describes relative odds, not a ratio of probabilities.
+- **Connection to the case study:** A compact weighted-versus-unweighted comparison will show how accounting for survey design affects the education association and uncertainty.
 
 ## Independent verification
 
-1. **Check and result:** Replace with an official source, diagnostic, simulation, manual calculation, comparison with a known method, or another suitable check.
-2. **Check and result:** Replace with a different check and what you learned.
+1. **Documentation and design check — planned.** Check the chosen sample, pre-election weight, strata, and PSU variables against the ANES User Guide and Codebook. Check survey-model syntax and variance estimation against the official `survey` documentation. Confirm eligible observations have valid design information and explain any exclusions. **Result: pending.**
 
-Link or cite verification sources where appropriate. A second AI response does not count as independent verification.
+2. **Independent numerical check — planned.** On exactly the same eligible analysis records, manually calculate the weighted Democratic-leaning proportion as `sum(weight * democratic) / sum(weight)`. Compare it with `survey::svymean()` and the fitted probability from an intercept-only survey logistic model. The three point estimates should agree within numerical tolerance. Separately compare full-model point estimates with a weighted `glm()` using the same weights and records; this does not validate ordinary `glm()` standard errors for a complex survey. **Result: pending.**
+
+A second AI response will not count as independent verification.
 
 ## Remaining limitation
 
-**State one important uncertainty, failure mode, or limitation that remains.**
+Survey weighting does not eliminate all nonresponse, measurement, or complete-case selection bias and does not make an observational association causal. Excluding neutral independents also limits the population addressed by our question.
 
-## Other AI use, if any
+## Other AI use
 
-**Briefly disclose earlier debugging, proofreading, or other AI assistance. Write “None” if there was no other use.**
+ChatGPT assisted with question development, drafting, and revising proposal text. The group remains responsible for reviewing the code and claims.
+
+## Sources
+
+- American National Election Studies. 2026. *ANES 2024 Time Series Study Full Release [dataset and documentation].* May 19, 2026 version. [Data and codebook](https://electionstudies.org/data-center/2024-time-series-study/).
+- R `survey` package: [Survey-weighted generalized linear models](https://r-survey.r-forge.r-project.org/pkgdown/docs/reference/svyglm.html).
+
