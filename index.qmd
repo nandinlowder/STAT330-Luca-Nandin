@@ -1,0 +1,80 @@
+---
+title: "Investigating the Relationship Between Educational Attainment and Political Affiliation"
+subtitle: "Examining educational differences in political leaning while accounting for age and household income"
+author:
+  - "Luca Ortega Avila"
+  - "Nandintsetseg Batsaikhan"
+date: last-modified
+description: "A STAT 330 regression case study of education and Democratic versus Republican leaning using the 2024 ANES."
+---
+
+::: {.callout-note}
+## Project status
+This website is a preliminary checkpoint version. The analysis and AI-supported extension are still in development.
+:::
+
+## The question
+
+**Is educational attainment associated with leaning Democratic rather than Republican, after accounting for age and household income?**
+
+Our intended audience is U.S. citizens aged 18 and older who are interested in politics. This question matters because it helps us understand whether differences in political leaning across education levels persist after accounting for age and income.
+
+We use the [2024 American National Election Studies (ANES) Time Series Study](https://electionstudies.org/data-center/2024-time-series-study/), May 19, 2026 release. The dataset contains 5,521 respondents and 1,738 variables, with one row per respondent. ANES combines newly recruited address-based samples with returning panel participants and collects interviews through online, in-person, telephone, and paper surveys. Our analysis uses pre-election variables.
+
+The response is binary political leaning, constructed from party identification (`V241227x`): Democratic identifiers and Democratic-leaning independents (categories 1–3) are coded 1, while Republican identifiers and Republican-leaning independents (categories 5–7) are coded 0. Neutral independents and missing or invalid responses are excluded. The main predictor is education (`V241465x`), with age (`V241458x`) and household income (`V241567x`) included as additional predictors. Education and income are treated as categorical variables. Our proposal's data checks identified 4,640 complete observations for this analysis.
+
+ANES permits research and statistical use with citation and protection of respondent privacy. We will report aggregate results. Limitations include self-reported responses, potential selection bias from missing data, income measured in brackets, and ages capped at 80. Population-level conclusions require appropriate survey weights and consideration of the sampling design. This observational study can identify associations but cannot establish causation.
+
+## What the baseline shows
+
+Our baseline is multiple logistic regression with Democratic versus Republican leaning as the binary response and education, age, and household income as predictors. Logistic regression is appropriate because the response has two categories.
+
+*In progress: add the reproducible baseline code, selected model output, a contextual interpretation with uncertainty, and a limitation that motivates further analysis.*
+
+```{r}
+# Load and prepare the data, then fit the baseline logistic regression.
+```
+
+```{r}
+# Display a useful figure or compact model summary.
+```
+
+## Going beyond the baseline
+
+### How well does the model predict unseen responses?
+
+We plan to use cross-validation to compare logistic regression specifications on held-out observations. This represents the validation and comparison course-method family.
+
+```{r}
+# Implement cross-validation and compare predictive performance.
+```
+
+### Does regularization improve prediction?
+
+We plan to compare the baseline with ridge or LASSO logistic regression to assess whether shrinking coefficients improves predictive performance. This represents the selection and shrinkage course-method family.
+
+```{r}
+# Fit and evaluate a regularized logistic regression model.
+```
+
+## A new direction with AI
+
+*In progress: identify an extension motivated by the preliminary analysis, document two independent verification checks, and explain how the extension strengthens the same research question.*
+
+Details and the extension plan will be recorded in the [AI-use record](ai-use.qmd).
+
+```{r}
+# Implement the selected extension and report its verification results.
+```
+
+## What this means
+
+*In progress: answer the research question using the completed analysis, discuss uncertainty and limitations, and distinguish association from causation.*
+
+## Data and code
+
+- **Data:** American National Election Studies. 2026. *ANES 2024 Time Series Study Full Release [dataset and documentation].* May 19, 2026 version. [Study page and downloads](https://electionstudies.org/data-center/2024-time-series-study/).
+- **Retrieval:** Download the May 19, 2026 CSV release and accompanying codebook from the study page. The analysis uses `anes_timeseries_2024_csv_20260519.csv`.
+- **Repository:** [STAT330-Luca-Nandin](https://github.com/nandinlowder/STAT330-Luca-Nandin).
+- **AI assistance:** See the [AI-use record](ai-use.qmd). ChatGPT assisted with question development, proposal drafting, R code, interpretation, and preparation of this checkpoint page.
+
